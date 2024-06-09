@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --back-shelves: #f5f0df;
+    --shadow-box: rgba(0,0,0,.5);
+    --back-header: rgb(255, 255, 255);
+    --color-btn: #f6f3e9;
+    --back-card-not-read: #CC5500;
+    --back-card-read: #6ac700;
+}
