@@ -4,18 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/main.css" />
-    <link rel="stylesheet" href="./styles/footer.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>To Do App</title>
 <script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
 
 <body>
-    <h1>What to do ?</h1>
+
+    <header>
+        <button type="button" class="btn-show-sb">&#8801</button>
+        <div id="title-page">
+            
+            <h1>
+                <img src="b11d2b03a072fc292419.svg" alt="todo icon" class="icon todo">
+                <span>To Do List</span>
+            </h1>
+        </div>
+    </header>
+
+
+    <div class="active" id="sidebar">
+        <div class="sb-container" id="task-info">
+            <h1>TASKS</h1>
+            <div>
+                <button id="add-task">+</button><span class="btn-add task">Add task</span>
+            </div>
+            <div>
+                <button id="show-today">
+                    <img src="233385e32206cd372d69.svg" alt="today icon" class="icon today">
+                </button><span class="btn-show today">Today</span>
+            </div>
+            <div>
+                <button id="show-over">
+                    <img src="05872146a8dde038f082.svg" alt="today icon" class="icon today">
+                </button><span class="btn-show over">Overdue</span>
+            </div>
+            
+        </div>
+        <div class="sb-container" id="project-info">
+            <h1>PROJECTS</h1>
+            <div>
+                <button id="add-project">+</button><span class="btn-add project">Add Project</span>
+            </div>
+            
+        </div>
+    </div>
+
+    <main>
+        <div id="test">
+            TEST
+        </div>
+    </main>
 
 
     <footer>
-        <p>Copyright &copy EnumaOub <a href="https://github.com/EnumaOub"><i style="font-size:24px"
+        <a href="https://github.com/EnumaOub"><i
                     class="fa">&#xf09b;</i></a></p>
     </footer>
     

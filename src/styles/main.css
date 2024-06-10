@@ -3,6 +3,11 @@
     margin: 0;
 }
 
+@font-face {
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
 :root {
     --back-shelves: #f5f0df;
     --shadow-box: rgba(0,0,0,.5);
@@ -10,4 +15,35 @@
     --color-btn: #f6f3e9;
     --back-card-not-read: #CC5500;
     --back-card-read: #6ac700;
+    --height-footer: 3%;
+    --width-sidebar: 15%;
+    --height-header: 10%;
+    --btn-color: #FFFFFF;
+    --header-bckg: #007BFF;
+    --sidebar-bckg: #FFFFFF;
+    --sidebar-btn-bckg: #007BFF;
+    --main-bckg: #F4F4F4;
+    --card-border-color: #DDDDDD;
+    --text-color-prime: #333333;
+    --text-color-second: #666666;
+}
+
+body {
+    font-family: Roboto, serif;
+    display: grid;
+    grid-template-rows: var(--height-header) calc(80% - var(--height-header)) 20%;
+    grid-template-columns: var(--width-sidebar) calc(100% - var(--width-sidebar));
+    height: 100dvh;
+    color: var(--text-color-prime);
+}
+
+main {
+    background-color: var(--main-bckg);
+    grid-row: 2/-1;
+    display: grid;
+    grid-auto-flow: dense;
+    padding: 5rem;
+}
+.card {
+    background-color: var(--card-border-color);
 }

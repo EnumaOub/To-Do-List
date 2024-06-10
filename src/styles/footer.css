@@ -5,14 +5,12 @@
 footer {
     position: fixed;
     bottom: 0;
-    background-color: var(--back-header);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    padding: 1rem 3rem;
-    border-top: 1px solid rgb(0,0,0);
-    box-shadow: 1rem 0 1rem var(--shadow-box);
+    right: 0;
+    background-color: var(--main-bckg);;
 
+}
+
+footer .fa {
+    font-size: 5rem;
+    opacity: .7;
 }
