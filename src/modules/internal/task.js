@@ -1,8 +1,7 @@
 console.log("TEST task");
 
 export class Task {
-    constructor(id, title, description, dateDue, dateStart, project, priority, progress) {
-        this.id = id;
+    constructor(title, description, dateDue, dateStart, project, priority=0, progress=0) {
         this.title = title;
         this.description = description;
         this.dateDue = dateDue;
@@ -14,7 +13,6 @@ export class Task {
     
     toJSON() {
         return {
-            id: this.id,
             title: this.title,
             description: this.description,
             dateDue: this.dateDue,

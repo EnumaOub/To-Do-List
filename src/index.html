@@ -56,6 +56,43 @@
     </main>
 
 
+    <dialog id="form-task">
+        <div>
+            <form action="" method="post" id="task-info">
+                <label for="task-title">Title</label>
+                <input type="text" id="task-title" name="task-title" required />
+                <label for="task-description">Description</label>
+                <input type="text" id="task-description" name="task-description" />
+                <label for="task-dateDue">Date Due</label>
+                <input type="date" id="task-dateDue" name="task-dateDue"/>
+                <label for="task-dateStart">Date Start</label>
+                <input type="date" id="task-dateStart" class="date-start" name="task-dateStart" required/>
+                <label for="task-project">Project</label>
+                <input type="text" id="task-project" name="task-project" required/>
+    
+                <input type="submit" value="Submit" id="btn-submit-task" />
+            </form>
+            <button type="button" class="btn-close-dialog" id="close-form-task" autofocus>Cancel</button>
+        </div>
+    </dialog>
+
+    <dialog id="form-project">
+        <div>
+            <form action="" method="post" id="project-info">
+                <label for="project-title">Title</label>
+                <input type="text" id="project-title" name="project-title" required />
+                <label for="project-description">Description</label>
+                <input type="text" id="project-description" name="project-description" />
+                <label for="project-dateStart">Date Start</label>
+                <input type="date" id="project-dateStart" class="date-start" name="project-dateStart" required/>
+    
+                <input type="submit" value="Submit" id="btn-submit-project" />
+            </form>
+            <button type="button" class="btn-close-dialog" id="close-form-project" autofocus>Cancel</button>
+        </div>
+    </dialog>
+
+
     <footer>
         <a href="https://github.com/EnumaOub"><i
                     class="fa">&#xf09b;</i></a></p>

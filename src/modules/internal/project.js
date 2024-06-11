@@ -1,8 +1,7 @@
 console.log("TEST project");
 
 export class Project {
-    constructor(id, title, description, dateStart) {
-        this.id = id;
+    constructor(title, description, dateStart) {
         this.title = title;
         this.description = description;
         this.dateStart = dateStart;
@@ -10,7 +9,6 @@ export class Project {
     
     toJSON() {
         return {
-            id: this.id,
             title: this.title,
             description: this.description,
             dateStart: this.dateStart,
