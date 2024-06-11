@@ -1,14 +1,15 @@
 console.log("TEST Form");
 
 
-const checkValue = () => {
+const checkValues = () => {
 
 }
 
-const createTask = () => {
-
+export function createTask() {
+    console.log("createTask");
 }
 
-const createProject = () => {
+export function createProject() {
+    console.log("createProject");
 
 }
