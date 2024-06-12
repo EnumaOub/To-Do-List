@@ -16,6 +16,10 @@ export class Task {
         this.progress = progress;
     }
 
+    getid() {
+        return this.id.toString()
+    }
+
     setTitle(title) {
         this.title = title;
     }
@@ -30,6 +34,10 @@ export class Task {
 
     setProject(project) {
         this.project = project;
+    }
+
+    checkId(id) {
+        return this.id.toString() === id.toString()
     }
     
     toJSON() {

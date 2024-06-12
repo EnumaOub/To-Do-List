@@ -1,6 +1,7 @@
 import { Task } from "./task";
 import { Project } from "./project";
 import { storeData, extractData } from "./store";
+import { getIndexProjectFromId, getIndexTaskFromId, getProjectFromId, getTaskFromId, insertTaskFromId, insertProjectFromId } from "../internal/getInfo.js";
 
 console.log("TEST Form");
 
@@ -21,23 +22,15 @@ const getAttributeTask = () => {
 const generateTask = (taskAttributes, id) => {
     const taskValues = taskAttributes.map((elem) => elem.value);
     const taskList = extractData()[1];
-    let newTask;
-    for (const task of taskList) {
-        if (id === task.id){
-            newTask = task;
-        }
-    }
+    const newTask = getTaskFromId(id);
     if (newTask){
-        const index = taskList.indexOf(newTask);
+        
+        
         newTask.setTitle(taskValues[0]);
         newTask.setDescription(taskValues[1]);
         newTask.setDateStart(taskValues[3]);
         newTask.setProject(taskValues[4]);
-        const newtaskList = taskList.slice()
-        if (index !== -1) {
-            newtaskList[index] = newTask;
-        }
-        storeData([], [...newtaskList]);
+        insertTaskFromId(id, newTask);
     }
    
     

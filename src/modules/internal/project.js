@@ -13,6 +13,26 @@ export class Project {
         this.description = description;
         this.dateStart = dateStart;
     }
+
+    getid() {
+        return this.id.toString()
+    }
+
+    setTitle(title) {
+        this.title = title;
+    }
+
+    setDescription(description) {
+        this.description = description;
+    }
+
+    setDateStart(dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    checkId(id) {
+        return this.id.toString() === id.toString()
+    }
     
     toJSON() {
         return {

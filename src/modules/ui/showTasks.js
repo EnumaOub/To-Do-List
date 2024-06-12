@@ -1,5 +1,6 @@
 import { storeData, extractData, resetData } from "../internal/store";
 import openDialog from "./dialogEdit";
+import { deleteTaskFromId } from "../internal/getInfo";
 
 console.log("TEST showTasks");
 
@@ -23,17 +24,7 @@ export function showTasks() {
         editButton.textContent = "Edit";
 
         deleteButton.addEventListener("click", (e) => {
-            const index = taskList.indexOf(task);
-            const newtaskList = taskList.slice()
-            if (index !== -1) {
-                newtaskList.splice(index, 1);
-            }
-            if (newtaskList.length > 0){
-                storeData([], newtaskList);
-            }
-            else {
-                resetData(true, false);
-            }
+            deleteTaskFromId(task.getid());
             
             showTasks();
         })
