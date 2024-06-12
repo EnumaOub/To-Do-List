@@ -10,13 +10,14 @@ header {
     grid-column: 1/-1;
     width: 100%;
     display: grid;
-    grid-template-columns: var(--width-sidebar) calc(100% - var(--width-sidebar));
+    grid-template-columns: var(--width-sidebar) calc(80% - var(--width-sidebar)) 20%;
     border-bottom: 2px solid black;
     background-color: var(--header-bckg);
 }
 
 header #title-page {
-  justify-self: center;
+    display: flex;
+    justify-self: center;
 }
 
 header h1 {
@@ -32,7 +33,7 @@ header h1 span {
     margin-top: .2rem;
 }
 
-header button {
+header #btn-show-sb {
     justify-self: center;
     background: none;
 	color: inherit;
@@ -46,28 +47,41 @@ header button {
     align-self: center;
 }
 
-header .btn-show-sb {
+header #btn-show-sb {
     font-weight: bold;
     font-size: 2rem;
     width: 2.2rem;
 }
 
-header .btn-show-sb.active {
+header #btn-show-sb.active {
     font-weight: bold;
     border-bottom: 2px solid black;
     font-size: 1.2rem;
     cursor: default;
 }
 
-header .btn-show-sb:hover {
+header #btn-show-sb:hover {
     background-color: rgba(0,0,0,0.1);
     cursor: pointer;
 }
 
-header #title-page {
-    display: flex
-}
-
 header .icon {
     width: 3rem;
+}
+
+header .reset {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .4rem;
+}
+
+header .reset button {
+    background-color: red;
+    color: aliceblue;
+    font-size: .7rem;
+    border-radius: 50%;
+    padding: .5rem;
+    border: 1px solid black;
+    cursor: pointer;
 }
