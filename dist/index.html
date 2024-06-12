@@ -72,7 +72,7 @@
                 <label for="task-dateDue">Date Due</label>
                 <input type="date" id="task-dateDue" name="task-dateDue"/>
                 <label for="task-dateStart">Date Start</label>
-                <input type="date" id="task-dateStart" class="date-start" name="task-dateStart" required/>
+                <input type="date" id="task-dateStart" class="dateStart" name="task-dateStart" required/>
                 <label for="task-project">Project</label>
                 <input type="text" id="task-project" name="task-project" required/>
     
@@ -91,11 +91,49 @@
                 <label for="project-description">Description</label>
                 <input type="text" id="project-description" name="project-description" />
                 <label for="project-dateStart">Date Start</label>
-                <input type="date" id="project-dateStart" class="date-start" name="project-dateStart" required/>
+                <input type="date" id="project-dateStart" class="dateStart" name="project-dateStart" required/>
     
                 <input type="submit" value="Submit" id="btn-submit-project" />
             </form>
             <button type="button" class="btn-close-dialog" id="close-form-project" autofocus>Cancel</button>
+        </div>
+    </dialog>
+
+    <dialog id="edit-task">
+        <div>
+            <h1>TASK</h1>
+            <form action="" method="post" id="task-info-edit">
+                <label for="edit-task-title">Title</label>
+                <input type="text" id="edit-task-title" name="edit-edit-task-title" class="title" required />
+                <label for="task-description">Description</label>
+                <input type="text" id="edit-task-description" name="edit-task-description" class="description" />
+                <label for="edit-task-dateDue">Date Due</label>
+                <input type="date" id="edit-task-dateDue" name="edit-task-dateDue" class="dateDue"/>
+                <label for="edit-task-dateStart">Date Start</label>
+                <input type="date" id="edit-task-dateStart" class="dateStart" name="edit-task-dateStart" required/>
+                <label for="edit-task-project">Project</label>
+                <input type="text" id="edit-task-project" name="edit-task-project" class="project" required/>
+    
+                <input type="submit" value="Submit" id="btn-submit-task-edit" />
+            </form>
+            <button type="button" class="btn-close-dialog" id="close-edit-task" autofocus>Cancel</button>
+        </div>
+    </dialog>
+
+    <dialog id="edit-project">
+        <div>
+            <h1>PROJECT</h1>
+            <form action="" method="post" id="project-info-edit">
+                <label for="edit-project-title">Title</label>
+                <input type="text" id="edit-project-title" name="edit-project-title" required />
+                <label for="edit-project-description">Description</label>
+                <input type="text" id="edit-project-description" name="edit-project-description" />
+                <label for="edit-project-dateStart">Date Start</label>
+                <input type="date" id="edit-project-dateStart" class="date-start" name="edit-project-dateStart" required/>
+    
+                <input type="submit" value="Submit" id="btn-submit-project-edit" />
+            </form>
+            <button type="button" class="btn-close-dialog" id="close-edit-project" autofocus>Cancel</button>
         </div>
     </dialog>
 

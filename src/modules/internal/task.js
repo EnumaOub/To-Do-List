@@ -15,6 +15,22 @@ export class Task {
         this.project = project;
         this.progress = progress;
     }
+
+    setTitle(title) {
+        this.title = title;
+    }
+
+    setDescription(description) {
+        this.description = description;
+    }
+
+    setDateStart(dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    setProject(project) {
+        this.project = project;
+    }
     
     toJSON() {
         return {

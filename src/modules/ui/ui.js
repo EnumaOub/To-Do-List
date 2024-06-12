@@ -1,5 +1,5 @@
 
-import openDialog from './dialog.js';
+import openDialog from './dialogCreate.js';
 import { resetData } from '../internal/store.js';
 import { showProjects } from './showProjects.js';
 import { showTasks } from './showTasks.js';

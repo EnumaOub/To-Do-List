@@ -1,4 +1,5 @@
 import { storeData, extractData, resetData } from "../internal/store";
+import openDialog from "./dialogEdit";
 
 console.log("TEST showTasks");
 
@@ -13,11 +14,13 @@ export function showTasks() {
         const description = document.createElement("p");
         const dateStart = document.createElement("p");
         const deleteButton = document.createElement("button")
+        const editButton = document.createElement("button")
 
         title.textContent = task.title;
         description.textContent = task.description;
         dateStart.textContent = task.dateStart.split("-").reverse().join("-");
         deleteButton.textContent = "Del";
+        editButton.textContent = "Edit";
 
         deleteButton.addEventListener("click", (e) => {
             const index = taskList.indexOf(task);
@@ -35,10 +38,15 @@ export function showTasks() {
             showTasks();
         })
 
+        editButton.addEventListener("click", (e) => {
+            openDialog("edit-task", task.id);
+        })
+
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(dateStart);
         card.appendChild(deleteButton);
+        card.appendChild(editButton);
         container.appendChild(card);
     }
 }
