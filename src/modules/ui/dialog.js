@@ -113,11 +113,9 @@ const submitEditProject = (event, id, id_dialog) => {
 const initEditForm = (id_dialog, id) => {
     const form = document.querySelector(`#${id_dialog} form`);
     if (id_dialog.includes("task")){
-        form.onsubmit = null;
         form.addEventListener("submit", (event) => {submitEditTask(event, id, id_dialog)},  { once: true });
     }
     else if (id_dialog.includes("project")){
-        form.removeEventListener("submit", (event) => {submitEditProject(event, id, id_dialog)}); 
         form.addEventListener("submit", (event) => {submitEditProject(event, id, id_dialog)});
     }
 

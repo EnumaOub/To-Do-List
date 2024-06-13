@@ -1,18 +1,19 @@
 console.log("TEST showHide");
 
 
-const toggleActive = (element) => {
-    const element_active = document.querySelector();
-    element_active.classList.toggle("active");
-    element.classList.toggle("active");
+export function showHide(id){
+    const elem = document.getElementById(id);
+    elem.classList.toggle("active");
+    updateLayout(id);
+    return elem.classList.contains("active");
 }
 
-const updateLayout = (element) => {
-    if (element.classList.contains("active")) {
-        element.style.display = "initial";
+const updateLayout = (id) => {
+    const elem = document.getElementById(id);
+    if (elem.classList.contains("active")) {
+        elem.style.display = "initial";
     }
     else {
-        element.style.display = "none";
+        elem.style.display = "none";
     }
-
 }
