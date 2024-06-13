@@ -1,5 +1,24 @@
 
-import { extractData, storeData } from "../internal/store.js";
+import { extractData, storeData, resetData } from "../internal/store.js";
+
+
+
+
+export function getAllId() {
+    const lstTask = extractData()[1];
+    const lstProject = extractData()[0];
+    let idTask = [];
+    let idProject = [];
+    for (const task of lstTask) {
+        idTask.push(Number(task.getid()));
+    }
+    for (const project of lstProject) {
+        idProject.push(Number(project.getid()))
+    }
+    return [idProject, idTask]
+
+}
+
 
 export function getTaskFromId(id) {
     const lstTask = extractData()[1];

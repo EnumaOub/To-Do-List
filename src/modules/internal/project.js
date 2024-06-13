@@ -1,17 +1,22 @@
+
+
 console.log("TEST project");
 
 let counter = 0;
 export class Project {
     constructor(title, description, dateStart, id=null) {
+        
+        this.title = title;
+        this.description = description;
+        this.dateStart = dateStart;
         if (id !== null){
             this.id = id;
         }
         else{
-            this.id = counter++;
+            const val = counter++;
+            const d = new Date();
+            this.id = val.toString() + title + description + d.toString();
         }
-        this.title = title;
-        this.description = description;
-        this.dateStart = dateStart;
     }
 
     getid() {
@@ -30,8 +35,8 @@ export class Project {
         this.dateStart = dateStart;
     }
 
-    checkId(id) {
-        return this.id.toString() === id.toString()
+    checkId(id2check) {
+        return this.getid().toString() === id2check.toString()
     }
     
     toJSON() {

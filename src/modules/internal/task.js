@@ -2,18 +2,21 @@ console.log("TEST task");
 let counter = 0;
 export class Task {
     constructor(title, description, dateDue, dateStart, project, progress=0, id=null) {
-        if (id !== null){
-            this.id = id;
-        }
-        else{
-            this.id = counter++;
-        }
+        
         this.title = title;
         this.description = description;
         this.dateDue = dateDue;
         this.dateStart = dateStart;
         this.project = project;
         this.progress = progress;
+        if (id !== null){
+            this.id = id;
+        }
+        else{
+            const val = counter++;
+            const d = new Date();
+            this.id = val.toString() + title + description + d.toString();
+        }
     }
 
     getid() {
@@ -36,8 +39,8 @@ export class Task {
         this.project = project;
     }
 
-    checkId(id) {
-        return this.id.toString() === id.toString()
+    checkId(id2check) {
+        return this.getid().toString() === id2check.toString()
     }
     
     toJSON() {

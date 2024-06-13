@@ -1,5 +1,5 @@
 import { storeData, extractData, resetData } from "../internal/store";
-import openDialog from "./dialogEdit";
+import openDialog from "./dialog";
 import { deleteTaskFromId } from "../internal/getInfo";
 
 console.log("TEST showTasks");
@@ -30,7 +30,7 @@ export function showTasks() {
         })
 
         editButton.addEventListener("click", (e) => {
-            openDialog("edit-task", task.id);
+            openDialog("edit-task", task.getid());
         })
 
         card.appendChild(title);
