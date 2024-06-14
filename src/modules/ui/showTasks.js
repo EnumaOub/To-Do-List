@@ -20,6 +20,46 @@ const generateProjectDiv = (container) => {
     }
 }
 
+const generateCardTask = (task) => {
+    const projectContainer = document.getElementById(task.project);
+    projectContainer.style.display = "grid";
+
+    const card = document.createElement("card");
+    card.id = `nb_${task.getid()}`
+    const title = document.createElement("h3");
+    const description = document.createElement("p");
+    const dateStart = document.createElement("p");
+    const deleteButton = document.createElement("button")
+    const editButton = document.createElement("button")
+
+    title.textContent = task.title;
+    description.textContent = task.description;
+    dateStart.textContent = task.dateStart.split("-").reverse().join("-");
+    deleteButton.textContent = "Del";
+    editButton.textContent = "Edit";
+
+    deleteButton.addEventListener("click", (e) => {
+        deleteTaskFromId(task.getid());
+        
+        showTasks();
+    })
+
+    editButton.addEventListener("click", (e) => {
+        openDialog("edit-task", task.getid());
+    })
+
+    card.appendChild(title);
+    card.appendChild(description);
+    card.appendChild(dateStart);
+    card.appendChild(deleteButton);
+    card.appendChild(editButton);
+    projectContainer.appendChild(card);
+}
+
+const checkFilters = () => {
+    const buttonsFilter = document.getElementsByClassName("btn-show")
+}
+
 export function showTasks() {
     const container = document.getElementsByTagName("main")[0];
     container.innerHTML = "";
@@ -27,38 +67,6 @@ export function showTasks() {
     const taskList = extractData()[1];
     
     for (const task of taskList) {
-        const projectContainer = document.getElementById(task.project);
-        projectContainer.style.display = "grid";
-
-        const card = document.createElement("card");
-        card.id = `nb_${task.getid()}`
-        const title = document.createElement("h3");
-        const description = document.createElement("p");
-        const dateStart = document.createElement("p");
-        const deleteButton = document.createElement("button")
-        const editButton = document.createElement("button")
-
-        title.textContent = task.title;
-        description.textContent = task.description;
-        dateStart.textContent = task.dateStart.split("-").reverse().join("-");
-        deleteButton.textContent = "Del";
-        editButton.textContent = "Edit";
-
-        deleteButton.addEventListener("click", (e) => {
-            deleteTaskFromId(task.getid());
-            
-            showTasks();
-        })
-
-        editButton.addEventListener("click", (e) => {
-            openDialog("edit-task", task.getid());
-        })
-
-        card.appendChild(title);
-        card.appendChild(description);
-        card.appendChild(dateStart);
-        card.appendChild(deleteButton);
-        card.appendChild(editButton);
-        projectContainer.appendChild(card);
+        generateCardTask(task);
     }
 }
