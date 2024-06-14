@@ -11,7 +11,7 @@ export function showHide(id){
 const updateLayout = (id) => {
     const elem = document.getElementById(id);
     if (elem.classList.contains("active")) {
-        elem.style.display = "initial";
+        elem.style.display = "flex";
     }
     else {
         elem.style.display = "none";
