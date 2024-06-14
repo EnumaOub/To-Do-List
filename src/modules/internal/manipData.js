@@ -1,7 +1,8 @@
+import { compareAsc, format } from "date-fns";
 import { Task } from "./task";
 import { Project } from "./project";
-import { storeData, extractData } from "./store";
-import { getTaskFromId, insertTaskFromId, getProjectFromId, insertProjectFromId } from "../internal/getInfo.js";
+import { storeData, extractData, insertTaskFromId, insertProjectFromId } from "./store";
+import { getTaskFromId, getProjectFromId } from "../internal/getInfo.js";
 
 console.log("TEST Form");
 
@@ -53,6 +54,15 @@ export function editTask(id) {
 
 // Project
 
+export function initProject() {
+    const oldProjects = extractData()[0];
+    if (oldProjects.length == 0) {
+        const datev = format(new Date(), 'yyyy-MM-dd');
+        const newProject = new Project("Inbox", "", datev);
+        storeData([...oldProjects, newProject], []);
+    }
+}
+
 const getAttributProject = (name) => {
     const title = document.getElementById(`${name}-title`);
     const description = document.getElementById(`${name}-description`);
@@ -78,10 +88,11 @@ const modifyProject = (projectAttributes, id) => {
     const projectValues = projectAttributes.map((elem) => elem.value);
     const newProject = getProjectFromId(id);
     if (newProject){
+        const oldProject = newProject.title;
         newProject.setTitle(projectValues[0]);
         newProject.setDescription(projectValues[1]);
         newProject.setDateStart(projectValues[2]);
-        insertProjectFromId(id, newProject);
+        insertProjectFromId(id, newProject, oldProject);
     }
 }
 

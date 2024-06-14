@@ -1,15 +1,21 @@
 
 import openDialog from './dialog.js';
 import { resetData } from '../internal/store.js';
-import { showProjects } from './showProjects.js';
+import { showProjects, populateProjectTask } from './showProjects.js';
 import { showTasks } from './showTasks.js';
 import { showHide } from './showHide.js';
 
 console.log("TEST UI");
 
+const showAll = () => {
+    showProjects();
+    populateProjectTask();
+    showTasks();
+}
+
 
 export default function callerForm() {
-    showTasks();
+    showAll();
     document.getElementById("add-task").addEventListener("click", (e) => {
         openDialog("create-task")
     });
@@ -23,6 +29,7 @@ export default function callerForm() {
     document.getElementById("btn-reset-project").addEventListener("click", (e) => {
         resetData(false, true);
         showProjects();
+        showTasks();
     });
     document.getElementById("btn-show-sb").addEventListener("click", (e) => {
         const body = document.getElementsByTagName("body")[0];

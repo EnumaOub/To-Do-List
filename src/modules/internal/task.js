@@ -42,6 +42,10 @@ export class Task {
     checkId(id2check) {
         return this.getid().toString() === id2check.toString()
     }
+
+    checkProject(project2check) {
+        return this.project.toString() === project2check.toString()
+    }
     
     toJSON() {
         return {

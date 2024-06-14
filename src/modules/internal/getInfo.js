@@ -71,69 +71,14 @@ export function getIndexProjectFromId(id) {
 }
 
 
-export function insertTaskFromId(id, newTask) {
+export function getTaskFromProject(project) {
     const lstTask = extractData()[1];
-    const index = getIndexTaskFromId(id);
-    const newtaskList = lstTask.slice()
-    if (index !== -1) {
-        newtaskList[index] = newTask;
-        storeData([], [...newtaskList]);
-        return true
+    let res = [];
+    for (const task of lstTask) {
+        if (task.checkProject(project)){
+            res.push(task);
+        }
     }
-    else {
-        return false
-    }
+    return res;
 }
 
-export function insertProjectFromId(id, newProject) {
-    const lstProject = extractData()[0];
-    const index = getIndexProjectFromId(id);
-    const newProjectList = lstProject.slice()
-    if (index !== -1) {
-        newProjectList[index] = newProject;
-        storeData([...newProjectList], []);
-        return true
-    }
-    else {
-        return false
-    }
-}
-
-export function deleteTaskFromId(id) {
-    const lstTask = extractData()[1];
-    const index = getIndexTaskFromId(id);
-    const newtaskList = lstTask.slice()
-    if (index !== -1) {
-        newtaskList.splice(index, 1);
-        if (newtaskList.length > 0){
-            storeData([], newtaskList);
-        }
-        else {
-            resetData(true, false);
-        }
-        return true;
-    }
-    else {
-        return false;
-    }
-    
-}
-
-export function deleteProjectFromId(id) {
-    const lstProject = extractData()[0];
-    const index = getIndexProjectFromId(id);
-    const newProjectList = lstProject.slice()
-    if (index !== -1) {
-        newProjectList.splice(index, 1);
-        if (newProjectList.length > 0){
-            storeData(newProjectList, []);
-        }
-        else {
-            resetData(false, true);
-        }
-        return true;
-    }
-    else {
-        return false;
-    }
-}

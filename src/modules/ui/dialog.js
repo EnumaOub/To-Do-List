@@ -1,7 +1,7 @@
 import { compareAsc, format } from "date-fns";
 import { editTask, editProject, createTask, createProject  } from "../internal/manipData.js";
 import { showTasks } from './showTasks.js';
-import { showProjects } from './showProjects.js';
+import { showProjects, populateProjectTask } from './showProjects.js';
 import { getProjectFromId, getTaskFromId } from "../internal/getInfo.js";
 
 
@@ -13,7 +13,6 @@ const initCancelButton = (id_dialog) => {
     close_form_btn.addEventListener("click", function(event){
         form.close();
         removeEventListener("click", event)
-        document.querySelector(`#${id_dialog} form`).reset();
     });
 }
 
@@ -73,6 +72,7 @@ function submitProject(event) {
     event.preventDefault()
     createProject();
     form.close();
+    populateProjectTask();
     showProjects();
 }
 
@@ -105,7 +105,9 @@ const submitEditProject = (event, id, id_dialog) => {
     event.preventDefault()
     editProject(id);
     form.close();
-    showProjects()
+    populateProjectTask();
+    showProjects();
+    showTasks();
     const formv = document.querySelector(`#${id_dialog} form`);
     formv.removeEventListener("submit", (e) => {submitEditProject(e, id, id_dialog)});  
 }
@@ -116,7 +118,7 @@ const initEditForm = (id_dialog, id) => {
         form.addEventListener("submit", (event) => {submitEditTask(event, id, id_dialog)},  { once: true });
     }
     else if (id_dialog.includes("project")){
-        form.addEventListener("submit", (event) => {submitEditProject(event, id, id_dialog)});
+        form.addEventListener("submit", (event) => {submitEditProject(event, id, id_dialog)},  { once: true });
     }
 
 }
@@ -125,6 +127,7 @@ export default function openDialog(id_dialog, id=null) {
     const form = document.getElementById(id_dialog);
     form.showModal();
     if (id_dialog.includes("create")){
+        initCancelButton(id_dialog);
         initDateStart(id_dialog);
         initCreateForm(id_dialog);
     }
