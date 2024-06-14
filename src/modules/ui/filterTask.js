@@ -9,8 +9,8 @@ export function getActivebutton(buttons) {
     return null;
 }
 
-export function buttonFilterTask(event) {
-    const buttons = document.getElementsByClassName("btn-filter");
+export function buttonFilterTask(event, buttons) {
+    
     const buttonSlct = event.target;
     const buttonActive = getActivebutton(buttons);
     if (buttonActive === buttonSlct){
@@ -23,4 +23,17 @@ export function buttonFilterTask(event) {
         }
     }
 
+}
+
+export function changeActiveProject() {
+    const projects = document.getElementsByClassName("projects-elem");
+    for (const project of projects) {
+        const buttonSlct = project.getElementsByClassName("selector")[0];
+        if (buttonSlct.classList.contains("active")){
+            project.classList.add("active");
+        }
+        else if (project.classList.contains("active")){
+            project.classList.toggle("active");
+        }
+    }
 }

@@ -79,7 +79,16 @@ const checkFilters = (task) => {
                 check: overDate && !sameDate
             },
         };
+}
 
+const checkProjectsFilter = () => {
+    const projects = document.getElementsByClassName("projects-elem");
+    for (const project of projects) {
+        if (project.classList.contains("active")){
+            return project.classList[0];
+        }
+    }
+    return false
 }
 
 export function showTasks() {
@@ -89,14 +98,20 @@ export function showTasks() {
     const taskList = extractData()[1];
     
     for (const task of taskList) {
-        const filter = checkFilters(task);
-        if (filter.today.active) {
-            if (filter.today.check){
+        const filterDate = checkFilters(task);
+        const filterProject = checkProjectsFilter();
+        if (filterDate.today.active) {
+            if (filterDate.today.check){
                 generateCardTask(task);
             }
         }
-        else if (filter.overdue.active) {
-            if (filter.overdue.check){
+        else if (filterDate.overdue.active) {
+            if (filterDate.overdue.check){
+                generateCardTask(task);
+            }
+        }
+        else if (filterProject){
+            if (filterProject === task.project) {
                 generateCardTask(task);
             }
         }

@@ -18,7 +18,7 @@
     margin-left: 2rem;
 }
 
-#sidebar div div{
+#sidebar #add-project-container{
     display: flex;
     align-items: center;
     gap: .5rem;
@@ -57,3 +57,52 @@
     padding-bottom: 0.2rem;
     align-self: center;
 }
+
+#sidebar div div:not(#container-projects) {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+#container-projects {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#container-projects .projects-elem {
+    display: flex;
+}
+
+#container-projects .projects-elem button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#container-projects .projects-elem .selector {
+    font-size: 2rem;
+}
+
+#container-projects .projects-elem .selector:hover {
+    color: inherit;
+    opacity: inherit;
+}
+
+.projects-elem card button {
+   margin: 0.1rem .5rem;
+   padding: 0 1rem;
+}
+
+
+.projects-elem card h3 {
+    text-align: center;
+ }
+
+ #container-projects .projects-elem.active {
+    background-color: rgba(0,0,0,.2);
+ }

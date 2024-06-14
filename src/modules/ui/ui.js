@@ -4,7 +4,7 @@ import { resetData } from '../internal/store.js';
 import { showProjects, populateProjectTask } from './showProjects.js';
 import { showTasks } from './showTasks.js';
 import { showHide } from './showHide.js';
-import { buttonFilterTask } from './filterTask.js';
+import { buttonFilterTask, changeActiveProject } from './filterTask.js';
 
 console.log("TEST UI");
 
@@ -42,13 +42,25 @@ export default function callerForm() {
         }
     });
     document.getElementById("show-today").addEventListener("click", (e) => {
-        buttonFilterTask(e);
+        const buttons = document.getElementsByClassName("btn-filter");
+        buttonFilterTask(e, buttons);
         showAll();
     });
     document.getElementById("show-over").addEventListener("click", (e) => {
-        buttonFilterTask(e);
+        const buttons = document.getElementsByClassName("btn-filter");
+        buttonFilterTask(e, buttons);
         showAll();
     });
+
+    const buttonsProject = document.querySelectorAll(".projects-elem .selector");
+
+    for (const button of buttonsProject) {
+        button.addEventListener("click", (e) => {
+            buttonFilterTask(e, buttonsProject);
+            changeActiveProject();
+            showTasks();
+        });
+    }
     
 
 }

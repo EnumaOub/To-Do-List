@@ -26,12 +26,21 @@ export function populateProjectTask() {
 }
 
 const generateCardProject = (project) => {
+    const container = document.createElement("div");
     const card = document.createElement("card");
-    card.id = `nb_${project.getid()}`
+    const select = document.createElement("button");
     const title = document.createElement("h3");
     const deleteButton = document.createElement("button")
     const editButton = document.createElement("button")
 
+    container.id = `nb_${project.getid()}`;
+    container.classList.add(project.title);
+    container.classList.add("projects-elem");
+    
+    select.className = "selector";
+
+
+    select.textContent = "#";
     title.textContent = project.title;
     deleteButton.textContent = "Del";
     editButton.textContent = "Edit";
@@ -48,10 +57,12 @@ const generateCardProject = (project) => {
 
     })
 
+    container.appendChild(select);
     card.appendChild(title);
     card.appendChild(deleteButton);
     card.appendChild(editButton);
-    return card;
+    container.appendChild(card)
+    return container;
 }
 
 export function showProjects() {
