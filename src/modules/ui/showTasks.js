@@ -56,12 +56,28 @@ const generateCardTask = (task) => {
     projectContainer.appendChild(card);
 }
 
-const checkFilters = () => {
+const checkFilters = (task) => {
     const buttonToday = document.getElementById("show-today");
     const buttonOverdue = document.getElementById("show-over");
+    const taskDate = new Date(task.dateDue); 
+    const today = new Date();
+    let sameDate = false;
+    let overDate = false;
+    if (task.dateDue) {
+        sameDate = (taskDate.getYear() === today.getYear()
+                        && taskDate.getMonth() === today.getMonth()
+                        && taskDate.getDay() === today.getDay());
+        overDate = (taskDate < today);
+    }
     return {
-            today: buttonToday.classList.contains("active"), 
-            overdue: buttonOverdue.classList.contains("active"),
+            today: {
+                active: buttonToday.classList.contains("active"), 
+                check: sameDate
+            }, 
+            overdue: {
+                active: buttonOverdue.classList.contains("active"), 
+                check: overDate && !sameDate
+            },
         };
 
 }
@@ -71,26 +87,16 @@ export function showTasks() {
     container.innerHTML = "";
     generateProjectDiv(container);
     const taskList = extractData()[1];
-    const filter = checkFilters();
+    
     for (const task of taskList) {
-        
-        
-        if (task.dateDue) {
-            const taskDate = new Date(task.dateDue); 
-            const today = new Date();
-            if (filter.today){
-                if (taskDate.getYear() === today.getYear()
-                    && taskDate.getMonth() === today.getMonth()
-                    && taskDate.getDay() === today.getDay()){
-                        generateCardTask(task);
-                    }
+        const filter = checkFilters(task);
+        if (filter.today.active) {
+            if (filter.today.check){
+                generateCardTask(task);
             }
-            else if (filter.overdue) {
-                if (taskDate < today){
-                        generateCardTask(task);
-                    }
-            }
-            else {
+        }
+        else if (filter.overdue.active) {
+            if (filter.overdue.check){
                 generateCardTask(task);
             }
         }
