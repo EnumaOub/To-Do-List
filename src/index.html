@@ -33,15 +33,15 @@
             <div>
                 <button id="add-task">+</button><span class="btn-add task">Add task</span>
             </div>
-            <div>
-                <button id="show-today">
+            <div id="today">
+                <button class="btn-filter today" id="show-today">
                     <img src="<%=require('./assets/icons/calendar-today.svg')%>" alt="today icon" class="icon today">
-                </button><span class="btn-show today">Today</span>
+                </button><span>Today</span>
             </div>
-            <div>
-                <button id="show-over">
+            <div id="overdue">
+                <button class="btn-filter overdue" id="show-over">
                     <img src="<%=require('./assets/icons/overdue.svg')%>" alt="today icon" class="icon today">
-                </button><span class="btn-show over">Overdue</span>
+                </button><span>Overdue</span>
             </div>
             
         </div>

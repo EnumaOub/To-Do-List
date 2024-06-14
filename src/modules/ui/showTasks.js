@@ -57,7 +57,13 @@ const generateCardTask = (task) => {
 }
 
 const checkFilters = () => {
-    const buttonsFilter = document.getElementsByClassName("btn-show")
+    const buttonToday = document.getElementById("show-today");
+    const buttonOverdue = document.getElementById("show-over");
+    return {
+            today: buttonToday.classList.contains("active"), 
+            overdue: buttonOverdue.classList.contains("active"),
+        };
+
 }
 
 export function showTasks() {
@@ -65,8 +71,33 @@ export function showTasks() {
     container.innerHTML = "";
     generateProjectDiv(container);
     const taskList = extractData()[1];
-    
+    const filter = checkFilters();
     for (const task of taskList) {
-        generateCardTask(task);
+        
+        
+        if (task.dateDue) {
+            const taskDate = new Date(task.dateDue); 
+            const today = new Date();
+            if (filter.today){
+                if (taskDate.getYear() === today.getYear()
+                    && taskDate.getMonth() === today.getMonth()
+                    && taskDate.getDay() === today.getDay()){
+                        generateCardTask(task);
+                    }
+            }
+            else if (filter.overdue) {
+                if (taskDate < today){
+                        generateCardTask(task);
+                    }
+            }
+            else {
+                generateCardTask(task);
+            }
+        }
+        else {
+            generateCardTask(task);
+        }
+        
+        
     }
 }

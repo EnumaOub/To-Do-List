@@ -30,6 +30,10 @@
     filter: invert(100%);
 }
 
+#sidebar #task-info button.active {
+    opacity: .2;
+}
+
 #sidebar button{
     background: var(--sidebar-btn-bckg);
 	color: white;

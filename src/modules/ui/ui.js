@@ -4,10 +4,11 @@ import { resetData } from '../internal/store.js';
 import { showProjects, populateProjectTask } from './showProjects.js';
 import { showTasks } from './showTasks.js';
 import { showHide } from './showHide.js';
+import { buttonFilterTask } from './filterTask.js';
 
 console.log("TEST UI");
 
-const showAll = () => {
+export function showAll() {
     showProjects();
     populateProjectTask();
     showTasks();
@@ -39,9 +40,17 @@ export default function callerForm() {
         else {
             body.style["grid-template-columns"] = "var(--width-sidebar) calc(100% - var(--width-sidebar))";
         }
-        
-        
     });
+    document.getElementById("show-today").addEventListener("click", (e) => {
+        buttonFilterTask(e);
+        showAll();
+    });
+    document.getElementById("show-over").addEventListener("click", (e) => {
+        buttonFilterTask(e);
+        showAll();
+    });
+    
+
 }
 
 export { callerForm };
