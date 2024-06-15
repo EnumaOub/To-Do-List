@@ -29,9 +29,9 @@
 
     <div class="active" id="sidebar">
         <div class="sb-container" id="task-info">
-            <h1>TASKS</h1>
-            <div>
-                <button id="add-task">+</button><span class="btn-add task">Add task</span>
+            <div class="info-add">
+                <button id="add-task">+</button>
+                <h1>TASKS</h1>
             </div>
             <div id="today">
                 <button class="btn-filter today" id="show-today">
@@ -43,12 +43,17 @@
                     <img src="05872146a8dde038f082.svg" alt="today icon" class="icon today">
                 </button><span>Overdue</span>
             </div>
+            <div id="urgent">
+                <button class="btn-filter urgent" id="show-urgent">
+                    <img src="a349a2d58483785c6643.svg" alt="urgent icon" class="icon urgen">
+                </button><span>Urgent</span>
+            </div>
             
         </div>
         <div class="sb-container" id="project-info">
-            <h1>PROJECTS</h1>
-            <div id="add-project-container">
-                <button id="add-project">+</button><span class="btn-add project">Add Project</span>
+            <div id="add-project-container" class="info-add">
+                <button id="add-project">+</button>
+                <h1>PROJECTS</h1>
             </div>
             <div id="container-projects">
 
