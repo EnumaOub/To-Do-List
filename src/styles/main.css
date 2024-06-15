@@ -26,6 +26,8 @@
     --card-border-color: #DDDDDD;
     --text-color-prime: #333333;
     --text-color-second: #666666;
+    --button-size-inner: 1.8rem;
+    --button-size-valid: 2rem;
 }
 
 body {
@@ -40,18 +42,85 @@ body {
 main {
     background-color: var(--main-bckg);
     grid-row: 2/-1;
-    display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(20rem, 1fr));
+    display: flex;
+    flex-direction: column;
     padding: 5rem;
+    gap: 1rem;
+    overflow: scroll;
 }
-.card {
-    background-color: var(--card-border-color);
+
+.task-tot-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .project-show {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    font-size: 1.7rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 2rem;
 }
+
+main card {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    background-color: var(--sidebar-bckg);
+    margin-top: 1rem;
+    padding: 1rem;
+    width: 80%;
+    border-spacing: 15px;
+    border: .1rem solid rgba(0,0,0,.3);
+    box-shadow: .2rem .2rem .2rem;
+}
+
+/* Button shoh more informations */
+
+.info-task{
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border: 0;
+    border-radius: .2rem;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    max-width: 2rem;
+    margin: .5rem 0;
+    padding: .2rem .5rem .3rem .5rem;
+}
+
+.info-task:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.info-task:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+
+/* More info task */
+
+card .more-info.active {
+    align-self: center;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    width: 80%;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+card .more-info span {
+    font-weight: bolder;
+}
+
+card .more-info .btn-more-info {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Style borders for priorities */
 
 card.priority-1 {
     border-left: 4px solid rgba(197, 209, 255, 0.8);
@@ -67,4 +136,36 @@ card.priority-3 {
 
 card.priority-0 {
     border-left: 4px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Add buttons images */
+
+.delete-btn {
+    background: url('../assets/icons/delete.svg') no-repeat;
+    width: var(--button-size-inner);
+    height: var(--button-size-inner);
+    cursor: pointer;
+}
+
+
+.edit-btn {
+    background: url('../assets/icons/file-edit.svg') no-repeat;
+    width: var(--button-size-inner);
+    height: var(--button-size-inner);
+    cursor: pointer;
+}
+
+main .task-tot-container .valid-btn {
+    background-color: rgb(255, 255, 255);
+    border: .1rem solid rgba(0, 0, 0, .8);
+	padding: 0;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    width: var(--button-size-valid);
+    height: var(--button-size-valid);
+    cursor: pointer;
+}
+
+main .task-tot-container .valid-btn:hover {
+    border: .1rem solid rgba(0, 255, 0, .8);
 }

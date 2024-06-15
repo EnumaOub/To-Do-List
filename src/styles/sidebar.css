@@ -7,8 +7,48 @@
     border-right: 1px solid black;
     display: flex;
     flex-direction: column;
-    gap: 10rem;
+    gap: 5rem;
     background-color: var(--sidebar-bckg);
+    overflow: scroll;
+}
+
+#sidebar h1 {
+    font-size: 1.5rem;
+    border-bottom: .2rem solid blue;
+    padding-bottom: 0.2rem;
+    align-self: center;
+}
+
+#sidebar .btn-filter, #sidebar #add-project, #sidebar #add-task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--sidebar-btn-bckg);
+	color: white;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+}
+
+#sidebar button .icon {
+    width: 2rem;
+    filter: invert(100%);
+}
+
+#sidebar .btn-filter:hover, #sidebar #add-project:hover, #sidebar #add-task:hover {
+    opacity: .4;
+    cursor: pointer;
+}
+
+.info-add {
+    display: flex;
+    gap: 1rem;
 }
 
 #sidebar .sb-container {
@@ -18,50 +58,17 @@
     margin-left: 2rem;
 }
 
-#sidebar #add-project-container{
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-}
 
-#sidebar button .icon {
-    width: 1rem;
-    margin-top: .3rem;
-    filter: invert(100%);
-}
 
 #sidebar #task-info button.active {
     opacity: .2;
 }
 
-#sidebar button{
-    background: var(--sidebar-btn-bckg);
-	color: white;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-}
-
-#sidebar button:hover {
-    opacity: .4;
-    cursor: pointer;
-}
-
-#sidebar h1 {
-    border-bottom: .3rem solid blue;
-    padding-bottom: 0.2rem;
-    align-self: center;
-}
-
-#sidebar div div:not(#container-projects) {
+#today, #overdue, #urgent {
+    margin-left: 2rem;
     display: flex;
+    gap: 1rem;
     align-items: center;
-    gap: .5rem;
 }
 
 
@@ -73,9 +80,13 @@
 
 #container-projects .projects-elem {
     display: flex;
+    gap: 1rem;
+    width: 80%;
+    padding: .5rem;
+    border-radius: 5%;
 }
 
-#container-projects .projects-elem button {
+#container-projects .projects-elem .selector {
     background: none;
 	color: inherit;
 	border: none;
@@ -103,6 +114,143 @@
     text-align: center;
  }
 
- #container-projects .projects-elem.active {
+#container-projects .projects-elem.active {
     background-color: rgba(0,0,0,.2);
  }
+
+
+/* Button shoh more informations */
+
+
+
+.projects-elem card {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .2rem;
+}
+
+.projects-elem card .active {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+ }
+
+#container-projects .projects-elem .info-project{
+    display: flex;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border: 0;
+    border-radius: .2rem;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    max-width: 1.2rem;
+    height: 1.2rem;
+    padding-bottom: 0.3rem;
+    margin: .5rem;
+    padding-left: 0.5rem;
+}
+
+#container-projects .projects-elem .info-project:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+#container-projects .projects-elem .info-project:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+#container-projects card .more-info.active {
+    align-self: center;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    width: 60%;
+    padding: .2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#container-projects card .more-info span {
+    font-weight: bolder;
+}
+
+#container-projects card .more-info .btn-more-info {
+    display: flex;
+    gap: 0.2rem;
+}
+
+@media screen and (max-width: 1600px) {
+    #sidebar h1 {
+        font-size: 1rem;
+    }
+
+
+}
+
+
+@media screen and (max-width: 1400px) {
+    #sidebar .sb-container {
+        margin-left: .1rem;
+    } 
+
+    #sidebar #add-project, #sidebar #add-task{
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #sidebar {
+        font-size: 1rem;
+        gap: 2rem;
+    }
+
+    #sidebar span {
+        display: none;
+    } 
+
+    #sidebar .btn-filter{
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    #sidebar #add-project, #sidebar #add-task{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    #container-projects .projects-elem .info-project{
+        max-width: 1rem;
+        height: 1rem;
+        font-size: .8rem;
+    }
+
+    #container-projects .projects-elem .selector {
+        font-size: 1rem;
+    }
+
+    #sidebar button .icon {
+        width: 1.5rem;
+    }
+
+    .info-add {
+        gap: .5rem;
+    }
+
+    #sidebar .sb-container {
+        gap: .5rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #sidebar h1 {
+        font-size: .6rem;
+    }
+
+    #sidebar {
+        font-size: .8rem;
+    }
+
+
+}

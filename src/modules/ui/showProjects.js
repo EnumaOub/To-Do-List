@@ -1,7 +1,9 @@
 import { extractData } from "../internal/store";
 import { deleteProjectFromId } from "../internal/store";
+import { compareAsc, format, formatDistance, formatRelative, subDays } from "date-fns";
 import openDialog from "./dialog";
 import { showTasks } from "./showTasks";
+
 
 console.log("TEST showProjects");
 
@@ -32,22 +34,36 @@ const generateCardProject = (project) => {
     const title = document.createElement("h3");
     const buttonShow = document.createElement("button");
     const infoContainer = document.createElement("div");
+    const description = document.createElement("p");
+    const dateStart = document.createElement("p");
     const deleteButton = document.createElement("button")
     const editButton = document.createElement("button")
 
     container.id = `nb_${project.getid()}`;
     container.classList.add(project.title);
     container.classList.add("projects-elem");
+
+    deleteButton.classList.add("delete-btn");
+    editButton.classList.add("edit-btn");
     
     select.className = "selector";
+    buttonShow.classList.add("info-project");
     buttonShow.classList.add("show");
+    
+    infoContainer.classList.add("more-info");
 
 
     select.textContent = "#";
     title.textContent = project.title;
-    buttonShow.textContent = "more"
-    deleteButton.textContent = "Del";
-    editButton.textContent = "Edit";
+    buttonShow.textContent = "+"
+
+    dateStart.innerHTML = `<span class="element-project">Started: </span>`;
+    if (project.dateStart) {
+        dateStart.appendChild(document.createTextNode(formatRelative(new Date(project.dateStart), new Date()).split('at')[0]));
+    }
+
+    description.innerHTML = `<span class="element-project">Description: </span>`;
+    description.appendChild(document.createTextNode(project.description));
 
     deleteButton.addEventListener("click", (e) => {
         deleteProjectFromId(project.getid());
@@ -65,12 +81,19 @@ const generateCardProject = (project) => {
         infoContainer.innerHTML = "";
 
         if (e.target.classList.contains("show")){
+            const container = document.createElement("div");
+            container.classList.add("btn-more-info");
+            infoContainer.classList.toggle("active");
             e.target.textContent = "-";
-            infoContainer.appendChild(deleteButton);
-            infoContainer.appendChild(editButton);
+            infoContainer.appendChild(dateStart);
+            infoContainer.appendChild(description);
+            container.appendChild(deleteButton);
+            container.appendChild(editButton);
+            infoContainer.appendChild(container);
         }
         else {
-            e.target.textContent = "more";
+            e.target.textContent = "+";
+            infoContainer.classList.toggle("active");
         }
 
         e.target.classList.toggle("show");
@@ -78,9 +101,9 @@ const generateCardProject = (project) => {
 
     container.appendChild(select);
     card.appendChild(title);
+    card.appendChild(buttonShow);
     card.appendChild(infoContainer);
     container.appendChild(card);
-    container.appendChild(buttonShow);
     return container;
 }
 

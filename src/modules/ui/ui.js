@@ -56,6 +56,11 @@ export default function callerForm() {
         buttonFilterTask(e, buttons);
         showAll();
     });
+    document.getElementById("show-urgent").addEventListener("click", (e) => {
+        const buttons = document.getElementsByClassName("btn-filter");
+        buttonFilterTask(e, buttons);
+        showAll();
+    });
 
     const buttonsProject = document.querySelectorAll(".projects-elem .selector");
 
