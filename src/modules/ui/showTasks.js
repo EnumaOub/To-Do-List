@@ -1,8 +1,7 @@
-import { compareAsc, format, formatDistance, formatRelative, subDays } from "date-fns";
-import { storeData, extractData, resetData, deleteTaskFromId } from "../internal/store";
+import { formatDistance, formatRelative } from "date-fns";
+import { extractData, deleteTaskFromId } from "../internal/store";
 import openDialog from "./dialog";
 
-console.log("TEST showTasks");
 
 const generateProjectDiv = (container) => {
     const projectList = extractData()[0];

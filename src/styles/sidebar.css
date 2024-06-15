@@ -40,6 +40,7 @@
 #sidebar button .icon {
     width: 2rem;
     filter: invert(100%);
+    pointer-events: none;
 }
 
 #sidebar .btn-filter:hover, #sidebar #add-project:hover, #sidebar #add-task:hover {

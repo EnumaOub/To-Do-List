@@ -1,11 +1,8 @@
 import { extractData } from "../internal/store";
 import { deleteProjectFromId } from "../internal/store";
-import { compareAsc, format, formatDistance, formatRelative, subDays } from "date-fns";
+import { formatRelative } from "date-fns";
 import openDialog from "./dialog";
 import { showTasks } from "./showTasks";
-
-
-console.log("TEST showProjects");
 
 
 export function populateProjectTask() {
@@ -49,7 +46,7 @@ const generateCardProject = (project) => {
     select.className = "selector";
     buttonShow.classList.add("info-project");
     buttonShow.classList.add("show");
-    
+
     infoContainer.classList.add("more-info");
 
 

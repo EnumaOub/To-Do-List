@@ -1,4 +1,3 @@
-console.log("TEST showHide");
 
 
 export function showHide(id){

@@ -1,7 +1,6 @@
-console.log("TEST store");
 import { Task } from "./task";
 import { Project } from "./project";
-import { getTaskFromId, getProjectFromId, getIndexProjectFromId, getIndexTaskFromId, getTaskFromProject } from "../internal/getInfo.js";
+import { getIndexProjectFromId, getIndexTaskFromId, getTaskFromProject } from "../internal/getInfo.js";
 
 export function storeData(lstProjects, lstTask){
     if (lstProjects.length > 0) {

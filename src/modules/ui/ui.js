@@ -6,7 +6,6 @@ import { showTasks } from './showTasks.js';
 import { showHide } from './showHide.js';
 import { buttonFilterTask, changeActiveProject } from './filterTask.js';
 
-console.log("TEST UI");
 
 export function showAll() {
     showProjects();

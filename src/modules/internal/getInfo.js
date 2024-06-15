@@ -1,8 +1,5 @@
 
-import { extractData, storeData, resetData } from "../internal/store.js";
-
-
-
+import { extractData } from "../internal/store.js";
 
 export function getAllId() {
     const lstTask = extractData()[1];

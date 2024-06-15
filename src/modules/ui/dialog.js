@@ -1,11 +1,9 @@
-import { compareAsc, format } from "date-fns";
+import { format } from "date-fns";
 import { editTask, editProject, createTask, createProject  } from "../internal/manipData.js";
 import { showTasks } from './showTasks.js';
 import { showProjects, populateProjectTask } from './showProjects.js';
 import { getProjectFromId, getTaskFromId } from "../internal/getInfo.js";
 
-
-console.log("TEST Dialog");
 
 const initCancelButton = (id_dialog) => {
     const form = document.getElementById(id_dialog);

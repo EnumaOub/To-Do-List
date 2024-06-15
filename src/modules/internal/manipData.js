@@ -1,10 +1,9 @@
-import { compareAsc, format } from "date-fns";
+import { format } from "date-fns";
 import { Task } from "./task";
 import { Project } from "./project";
 import { storeData, extractData, insertTaskFromId, insertProjectFromId } from "./store";
 import { getTaskFromId, getProjectFromId } from "../internal/getInfo.js";
 
-console.log("TEST Form");
 
 // Task
 
