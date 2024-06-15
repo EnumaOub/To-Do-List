@@ -1,3 +1,4 @@
+import { compareAsc, format, formatDistance, formatRelative, subDays } from "date-fns";
 import { storeData, extractData, resetData, deleteTaskFromId } from "../internal/store";
 import openDialog from "./dialog";
 
@@ -25,22 +26,51 @@ const generateCardTask = (task) => {
     projectContainer.style.display = "grid";
 
     const card = document.createElement("card");
-    card.id = `nb_${task.getid()}`
+    const buttonValidate = document.createElement("button");
     const title = document.createElement("h3");
-    const description = document.createElement("p");
+    const dateDue = document.createElement("p");
     const dateStart = document.createElement("p");
-    const deleteButton = document.createElement("button")
-    const editButton = document.createElement("button")
+    const buttonShow = document.createElement("button");
+    const infoContainer = document.createElement("div");
+    const description = document.createElement("p");
+    const deleteButton = document.createElement("button");
+    const editButton = document.createElement("button");
 
+    card.id = `nb_${task.getid()}`;
+    card.classList.add(`priority-${task.priority}`);
+    buttonShow.classList.add("show");
+    buttonValidate.classList.add("valid-btn");
+
+    buttonValidate.textContent = "V";
     title.textContent = task.title;
-    description.textContent = task.description;
-    dateStart.textContent = task.dateStart.split("-").reverse().join("-");
+
+    dateDue.innerHTML = `<span class="element-task">Due: </span>`;
+    if (task.dateDue) {
+        dateDue.appendChild(document.createTextNode(formatDistance(new Date(task.dateDue), new Date(), { addSuffix: true })));
+    }
+
+    dateStart.innerHTML = `<span class="element-task">Started: </span>`;
+    if (task.dateStart) {
+        dateStart.appendChild(document.createTextNode(formatRelative(new Date(task.dateStart), new Date()).split('at')[0]));
+    }
+
+    buttonShow.textContent = "+"
+
+    description.innerHTML = `<span class="element-task">Description: </span>`;
+    description.appendChild(document.createTextNode(task.description));
+
     deleteButton.textContent = "Del";
     editButton.textContent = "Edit";
 
+    buttonValidate.addEventListener("click", (e) => {
+        if (confirm(`Are you sure of Validating the task "${task.title}" !`)) {
+            deleteTaskFromId(task.getid());
+            showTasks();
+        }
+    })
+
     deleteButton.addEventListener("click", (e) => {
         deleteTaskFromId(task.getid());
-        
         showTasks();
     })
 
@@ -48,11 +78,29 @@ const generateCardTask = (task) => {
         openDialog("edit-task", task.getid());
     })
 
+    buttonShow.addEventListener("click", (e) => {
+        infoContainer.innerHTML = "";
+
+        if (e.target.classList.contains("show")){
+            e.target.textContent = "-";
+            infoContainer.appendChild(dateStart);
+            infoContainer.appendChild(description);
+            infoContainer.appendChild(deleteButton);
+            infoContainer.appendChild(editButton);
+        }
+        else {
+            e.target.textContent = "+";
+        }
+        e.target.classList.toggle("show");
+    })
+
+    projectContainer.appendChild(buttonValidate);
+
     card.appendChild(title);
-    card.appendChild(description);
-    card.appendChild(dateStart);
-    card.appendChild(deleteButton);
-    card.appendChild(editButton);
+    card.appendChild(dateDue);
+    card.appendChild(buttonShow);
+    card.appendChild(infoContainer);
+    
     projectContainer.appendChild(card);
 }
 

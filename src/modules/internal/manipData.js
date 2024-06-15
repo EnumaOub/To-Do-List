@@ -14,7 +14,8 @@ const getAttributeTask = (name) => {
     const dateDue = document.getElementById(`${name}-dateDue`);
     const dateStart = document.getElementById(`${name}-dateStart`);
     const project = document.getElementById(`${name}-project`);
-    return [title, description, dateDue, dateStart, project]
+    const priority = document.getElementById(`${name}-priority`);
+    return [title, description, dateDue, dateStart, project, priority]
 }
 
 const modifyTask = (taskAttributes, id) => {
@@ -23,8 +24,10 @@ const modifyTask = (taskAttributes, id) => {
     if (newTask){
         newTask.setTitle(taskValues[0]);
         newTask.setDescription(taskValues[1]);
+        newTask.setDateDue(taskValues[2]);
         newTask.setDateStart(taskValues[3]);
         newTask.setProject(taskValues[4]);
+        newTask.setPriority(taskValues[5]);
         insertTaskFromId(id, newTask);
     }
 }

@@ -1,14 +1,14 @@
 console.log("TEST task");
 let counter = 0;
 export class Task {
-    constructor(title, description, dateDue, dateStart, project, progress=0, id=null) {
+    constructor(title, description, dateDue, dateStart, project, priority=2, id=null) {
         
         this.title = title;
         this.description = description;
         this.dateDue = dateDue;
         this.dateStart = dateStart;
         this.project = project;
-        this.progress = progress;
+        this.priority = priority;
         if (id !== null){
             this.id = id;
         }
@@ -35,6 +35,14 @@ export class Task {
         this.dateStart = dateStart;
     }
 
+    setDateDue(dateDue) {
+        this.dateDue = dateDue;
+    }
+
+    setPriority(priority) {
+        this.priority = priority;
+    }
+
     setProject(project) {
         this.project = project;
     }
@@ -54,7 +62,7 @@ export class Task {
             dateDue: this.dateDue,
             dateStart: this.dateStart,
             project: this.project,
-            progress: this.progress,
+            priority: this.priority,
             id: this.id,
         }
       }

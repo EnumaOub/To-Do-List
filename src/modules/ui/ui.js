@@ -24,13 +24,18 @@ export default function callerForm() {
         openDialog("create-project")
     });
     document.getElementById("btn-reset-task").addEventListener("click", (e) => {
-        resetData(true, false);
-        showTasks();
+        if (confirm(`Are you sure of Resetting all tasks!`)) {
+            resetData(true, false);
+            showTasks();
+        }
+        
     });
     document.getElementById("btn-reset-project").addEventListener("click", (e) => {
-        resetData(false, true);
-        showProjects();
-        showTasks();
+        if (confirm(`Are you sure of Resetting all projects be aware that it will also reset all tasks!`)) {
+            resetData(false, true);
+            showProjects();
+            showTasks();
+        }
     });
     document.getElementById("btn-show-sb").addEventListener("click", (e) => {
         const body = document.getElementsByTagName("body")[0];

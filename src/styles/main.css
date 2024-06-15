@@ -52,3 +52,19 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 }
+
+card.priority-1 {
+    border-left: 4px solid rgba(197, 209, 255, 0.8);
+}
+
+card.priority-2 {
+    border-left: 4px solid rgba(107, 248, 107, 0.88);
+}
+
+card.priority-3 {
+    border-left: 4px solid rgba(255, 0, 0, 0.88);
+}
+
+card.priority-0 {
+    border-left: 4px solid rgba(0, 0, 0, 0.2);
+}

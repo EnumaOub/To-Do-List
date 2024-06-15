@@ -30,6 +30,8 @@ const generateCardProject = (project) => {
     const card = document.createElement("card");
     const select = document.createElement("button");
     const title = document.createElement("h3");
+    const buttonShow = document.createElement("button");
+    const infoContainer = document.createElement("div");
     const deleteButton = document.createElement("button")
     const editButton = document.createElement("button")
 
@@ -38,10 +40,12 @@ const generateCardProject = (project) => {
     container.classList.add("projects-elem");
     
     select.className = "selector";
+    buttonShow.classList.add("show");
 
 
     select.textContent = "#";
     title.textContent = project.title;
+    buttonShow.textContent = "more"
     deleteButton.textContent = "Del";
     editButton.textContent = "Edit";
 
@@ -57,11 +61,26 @@ const generateCardProject = (project) => {
 
     })
 
+    buttonShow.addEventListener("click", (e) => {
+        infoContainer.innerHTML = "";
+
+        if (e.target.classList.contains("show")){
+            e.target.textContent = "-";
+            infoContainer.appendChild(deleteButton);
+            infoContainer.appendChild(editButton);
+        }
+        else {
+            e.target.textContent = "more";
+        }
+
+        e.target.classList.toggle("show");
+    })
+
     container.appendChild(select);
     card.appendChild(title);
-    card.appendChild(deleteButton);
-    card.appendChild(editButton);
-    container.appendChild(card)
+    card.appendChild(infoContainer);
+    container.appendChild(card);
+    container.appendChild(buttonShow);
     return container;
 }
 
