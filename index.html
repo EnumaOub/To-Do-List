@@ -47,7 +47,7 @@
         </div>
         <div class="sb-container" id="project-info">
             <h1>PROJECTS</h1>
-            <div>
+            <div id="add-project-container">
                 <button id="add-project">+</button><span class="btn-add project">Add Project</span>
             </div>
             <div id="container-projects">
@@ -79,6 +79,12 @@
                 <label for="task-project">Project</label>
                 <select name="task-project" id="task-project" class="project-dialog"  required>
 
+                </select>
+                <label for="task-priority">Project</label>
+                <select name="task-priority" id="task-priority" required>
+                    <option value="1">Not a priority</option>
+                    <option value="2" selected>Normal</option>
+                    <option value="3">priority</option>
                 </select>
     
                 <input type="submit" value="Submit" id="btn-submit-task" />
@@ -119,6 +125,12 @@
                 <label for="edit-task-project">Project</label>
                 <select name="edit-task-project" id="edit-task-project" class="project-dialog" required>
 
+                </select>
+                <label for="edit-task-priority">Project</label>
+                <select name="edit-task-priority" id="edit-task-priority"  required>
+                    <option value="1">Not a priority</option>
+                    <option value="2" selected>Normal</option>
+                    <option value="3">priority</option>
                 </select>
     
                 <input type="submit" value="Submit" id="btn-submit-task-edit" />
