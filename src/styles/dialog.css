@@ -68,10 +68,24 @@ select:focus, select:active {
 }
 
 select option {
-    background-color: #f0a500;
-    color: #fff;
+    
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
 
+
+select.priority-lst option[value="1"] {
+    background: rgba(197, 209, 255, 1);
+}
+
+select.priority-lst option[value="2"] {
+    background: rgba(107, 248, 107, 1);
+}
+
+select.priority-lst option[value="3"] {
+    background: rgba(255, 0, 0, 1);
+}
 
 @media screen and (max-width: 800px) {
     dialog {

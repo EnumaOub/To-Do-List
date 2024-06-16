@@ -4,9 +4,6 @@ import './styles/sidebar.css';
 import './styles/header.css';
 import './styles/dialog.css';
 
-import { initProject } from './modules/internal/project.js';
+import { UI } from './modules/ui/ui';
 
-import { callerForm } from './modules/ui/ui';
-
-console.log("TEST")
-callerForm();
+UI().generate();

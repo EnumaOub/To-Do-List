@@ -73,50 +73,51 @@ export class Task {
 }
 
 
-// Functions
+// Factory Function allowing to create and edit tasks
 
-const getAttributeTask = (name) => {
-    const title = document.getElementById(`${name}-title`);
-    const description = document.getElementById(`${name}-description`);
-    const dateDue = document.getElementById(`${name}-dateDue`);
-    const dateStart = document.getElementById(`${name}-dateStart`);
-    const project = document.getElementById(`${name}-project`);
-    const priority = document.getElementById(`${name}-priority`);
-    return [title, description, dateDue, dateStart, project, priority]
+export function taskGen() {
+
+    const getAttributeTask = (name) => {
+        const title = document.getElementById(`${name}-title`);
+        const description = document.getElementById(`${name}-description`);
+        const dateDue = document.getElementById(`${name}-dateDue`);
+        const dateStart = document.getElementById(`${name}-dateStart`);
+        const project = document.getElementById(`${name}-project`);
+        const priority = document.getElementById(`${name}-priority`);
+        return [title, description, dateDue, dateStart, project, priority]
+    };
+    
+    const modifyTask = (taskAttributes, id) => {
+        const taskValues = taskAttributes.map((elem) => elem.value);
+        const newTask = getTaskFromId(id);
+        if (newTask){
+            newTask.setTitle(taskValues[0]);
+            newTask.setDescription(taskValues[1]);
+            newTask.setDateDue(taskValues[2]);
+            newTask.setDateStart(taskValues[3]);
+            newTask.setProject(taskValues[4]);
+            newTask.setPriority(taskValues[5]);
+            insertTaskFromId(id, newTask);
+        }
+    };
+    
+    const generateTask = (taskAttributes) => {
+        const taskValues = taskAttributes.map((elem) => elem.value);
+        const newTask = new Task(...taskValues);
+        const oldTasks = extractData()[1];
+        storeData([], [...oldTasks, newTask]);
+    };
+    
+    const createTask = () => {
+        const taskAttributes = getAttributeTask("task");
+        generateTask(taskAttributes);
+    };
+    
+    const editTask = (id) => {
+        const taskAttributes = getAttributeTask("edit-task");
+        modifyTask(taskAttributes, id);
+    };
+
+    return { editTask, createTask };
 }
 
-const modifyTask = (taskAttributes, id) => {
-    const taskValues = taskAttributes.map((elem) => elem.value);
-    const newTask = getTaskFromId(id);
-    if (newTask){
-        newTask.setTitle(taskValues[0]);
-        newTask.setDescription(taskValues[1]);
-        newTask.setDateDue(taskValues[2]);
-        newTask.setDateStart(taskValues[3]);
-        newTask.setProject(taskValues[4]);
-        newTask.setPriority(taskValues[5]);
-        insertTaskFromId(id, newTask);
-    }
-}
-
-const generateTask = (taskAttributes) => {
-    const taskValues = taskAttributes.map((elem) => elem.value);
-    const newTask = new Task(...taskValues);
-    const oldTasks = extractData()[1];
-    storeData([], [...oldTasks, newTask]);
-}
-
-export function createTask() {
-    const taskAttributes = getAttributeTask("task");
-    generateTask(taskAttributes);
-    console.log("createTask");
-    console.log(extractData()[1]);
-
-}
-
-export function editTask(id) {
-    const taskAttributes = getAttributeTask("edit-task");
-    modifyTask(taskAttributes, id);
-    console.log("editTask");
-    console.log(extractData()[1]);
-}
