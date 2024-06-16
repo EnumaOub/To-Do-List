@@ -1,5 +1,6 @@
 import { format } from "date-fns";
-import { editTask, editProject, createTask, createProject  } from "../internal/manipData.js";
+import { editTask, createTask } from "../internal/task.js";
+import { createProject, editProject } from "../internal/project.js";
 import { showTasks } from './showTasks.js';
 import { showProjects, populateProjectTask } from './showProjects.js';
 import { getProjectFromId, getTaskFromId } from "../internal/getInfo.js";

@@ -4,10 +4,9 @@ import './styles/sidebar.css';
 import './styles/header.css';
 import './styles/dialog.css';
 
-import { initProject } from './modules/internal/manipData.js';
+import { initProject } from './modules/internal/project.js';
 
 import { callerForm } from './modules/ui/ui';
 
 console.log("TEST")
-initProject();
 callerForm();

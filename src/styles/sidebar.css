@@ -95,11 +95,9 @@
 	padding: 0;
 	cursor: pointer;
 	outline: inherit;
-}
-
-#container-projects .projects-elem .selector {
     font-size: 2rem;
 }
+
 
 #container-projects .projects-elem .selector:hover {
     color: inherit;

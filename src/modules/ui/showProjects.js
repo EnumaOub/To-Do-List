@@ -1,5 +1,4 @@
-import { extractData } from "../internal/store";
-import { deleteProjectFromId } from "../internal/store";
+import { deleteProjectFromId, extractData } from "../internal/store";
 import { formatRelative } from "date-fns";
 import openDialog from "./dialog";
 import { showTasks } from "./showTasks";

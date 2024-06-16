@@ -1,3 +1,6 @@
+import { storeData, extractData, insertProjectFromId } from "./store";
+import { getProjectFromId } from "../internal/getInfo.js";
+import { format } from "date-fns";
 // Class
 
 let counter = 0;
@@ -54,7 +57,7 @@ export function initProject() {
     const oldProjects = extractData()[0];
     if (oldProjects.length == 0) {
         const datev = format(new Date(), 'yyyy-MM-dd');
-        const newProject = new Project("Inbox", "", datev);
+        const newProject = new Project("Default", "", datev);
         storeData([...oldProjects, newProject], []);
     }
 }
