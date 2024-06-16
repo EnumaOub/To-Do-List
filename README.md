@@ -13,7 +13,7 @@ It was a project allowing the use of webpack to manage libraries but also apply 
 
 ## Working
 I added a button allowing to auto populate with some tasks and projects.
-![alt text](./media/main2.gif)
+![alt text](./media/main.gif)
 
 With the sidebar we can create a project or a task, which is assigned to a project.\
 For the task we can set
